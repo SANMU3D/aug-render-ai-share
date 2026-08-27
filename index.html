@@ -30,12 +30,14 @@ h1,h2,h3,p{margin:0}.hero-title{font-weight:200;font-size:min(10.1vw,16.7vh);lin
 .source-frame{height:100%;min-height:390px;margin:0;background:var(--paper);border:1px solid var(--grey-2);display:grid;place-items:center;overflow:hidden;position:relative;cursor:zoom-in}
 .source-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .source-frame.wide{height:42vh;min-height:0}
+.outcome-grid{grid-template-columns:minmax(220px,.22fr) minmax(0,1fr);gap:2.4vw}
 .media-stack{display:grid;grid-template-rows:minmax(0,1fr) 19vh;gap:16px;min-height:0}
 .media-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;min-height:0}
+.flow-grid{grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)}
 .media-card{margin:0;background:var(--paper);border:1px solid var(--grey-2);position:relative;overflow:hidden;min-height:0;cursor:zoom-in}
 .media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .media-card .cap{position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;background:rgba(250,250,248,.86);padding:6px 8px;color:var(--ink);font-weight:600}
-.flow-order{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:max(14px,.8vw);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-3);margin-bottom:16px}.flow-order .arrow{color:var(--accent);font-size:18px;line-height:1}
+.flow-order{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:max(14px,.8vw);letter-spacing:0;color:var(--grey-3);margin-bottom:4px}.flow-order .arrow{color:var(--accent);font-size:18px;line-height:1}
 .layer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0;margin-top:4vh}
 .layer-card{margin:0;background:var(--paper);border:1px solid var(--grey-2);position:relative;overflow:hidden;min-height:0;cursor:zoom-in}
 .layer-card img{position:absolute;inset:0;width:100%;height:72%;object-fit:cover;display:block}
@@ -55,7 +57,7 @@ h1,h2,h3,p{margin:0}.hero-title{font-weight:200;font-size:min(10.1vw,16.7vh);lin
 #nav{position:fixed;right:24px;bottom:20px;display:flex;align-items:center;gap:10px;z-index:5}button{width:42px;height:42px;border:1px solid rgba(10,10,10,.18);background:rgba(250,250,248,.86);color:var(--ink);display:grid;place-items:center;cursor:pointer}button:hover{border-color:var(--accent);color:var(--accent)}
 .counter{height:42px;min-width:82px;border:1px solid rgba(10,10,10,.18);display:grid;place-items:center;background:rgba(250,250,248,.86);font-family:var(--mono);font-size:14px;color:#555}.progress{position:fixed;left:0;top:0;height:3px;background:var(--accent);z-index:10;transition:width .58s cubic-bezier(.2,0,.38,.9)}.hint{position:fixed;left:24px;bottom:24px;z-index:5;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-3)}.accent-mat{position:absolute;right:5vw;bottom:8vh;width:30vw;height:26vh;opacity:.16;background-image:radial-gradient(currentColor 1px,transparent 1px);background-size:12px 12px}
 [data-anim]{opacity:0;transform:translateY(18px);transition:opacity .42s ease,transform .42s ease}.active [data-anim]{opacity:1;transform:none}.active [data-anim]:nth-child(2){transition-delay:.08s}.active [data-anim]:nth-child(3){transition-delay:.16s}.active [data-anim]:nth-child(4){transition-delay:.24s}
-@media (max-width:900px){html,body{overflow:auto}#deck{height:auto;width:100vw;display:block;transform:none!important}.slide{width:100vw;height:auto;min-height:100vh;padding:48px 22px 96px}.grid-2,.grid-4,.compare,.mask-diagram,.split,.video-grid,.media-stack{grid-template-columns:1fr;display:grid}.compare{gap:28px}.vline{height:1px;width:100%}.timeline{grid-template-columns:1fr}.step{min-height:auto;padding-bottom:28px}.layer{transform:none!important;height:240px}.video-card{height:260px}.hero-title,.statement{font-size:54px}.xl{font-size:40px}}
+@media (max-width:900px){html,body{overflow:auto}#deck{height:auto;width:100vw;display:block;transform:none!important}.slide{width:100vw;height:auto;min-height:100vh;padding:48px 22px 96px}.grid-2,.grid-4,.compare,.mask-diagram,.split,.video-grid,.media-stack{grid-template-columns:1fr;display:grid}.outcome-grid{grid-template-columns:1fr}.flow-grid{grid-template-rows:auto repeat(4,240px)}.compare{gap:28px}.vline{height:1px;width:100%}.timeline{grid-template-columns:1fr}.step{min-height:auto;padding-bottom:28px}.layer{transform:none!important;height:240px}.video-card{height:260px}.hero-title,.statement{font-size:54px}.xl{font-size:40px}}
 </style>
 </head>
 <body>
@@ -65,32 +67,32 @@ h1,h2,h3,p{margin:0}.hero-title{font-weight:200;font-size:min(10.1vw,16.7vh);lin
     <div class="chrome"><div>Render AI Monthly · Case 08</div><div>01 / 06</div></div>
     <div style="flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:3vh">
       <div class="meta" data-anim>AI RENDERING / WORKFLOW SHARE</div>
-      <h1 class="hero-title" data-anim>P50 多色夏日氛围感海报<br><span style="display:block;font-size:.9em;margin-top:.08em">制作流程分享</span></h1>
+      <h1 class="hero-title" data-anim style="font-size:min(8.2vw,13.5vh);max-width:11em">夏日氛围感海报<br>制作流程分享</h1>
       <div data-anim><div class="rule" style="background:rgba(255,255,255,.35);opacity:1"></div><p class="lead" style="margin-top:2vh">从参考图、线稿约束、抽卡筛选，到产品角度与场景后期的一次制作流程复盘。</p></div>
     </div>
     <div class="accent-mat"></div>
   </section>
   <section class="slide" data-title="成品目标">
     <div class="chrome"><div>Outcome · Final Poster</div><div>02 / 06</div></div>
-    <div class="grid-2">
-      <div style="display:flex;flex-direction:column;justify-content:space-between;gap:32px" data-anim><div><div class="meta">成品 / P50 多色夏日氛围感海报</div><h2 class="xl" style="margin-top:2vh;font-size:min(5.6vw,10vh)">先有季节感，<br>再有产品<br>存在感。</h2></div><p class="lead">色彩、光线和环境情绪负责“夏日”；产品角度、边缘和材质负责“可信”。两者同时成立，海报才不只是好看背景。</p></div>
-      <div class="media-stack" data-anim>
-        <figure class="source-frame" style="height:58vh;min-height:0"><img src="images/ppt-media/image4.jpeg" alt="P50 多色夏日氛围感海报成品图"></figure>
-        <figure class="video-card" style="height:19vh"><video src="images/ppt-media/media1.mp4" controls muted preload="metadata" playsinline></video><figcaption>视频素材</figcaption></figure>
+    <div class="grid-2 outcome-grid">
+      <div style="display:flex;flex-direction:column;justify-content:space-between;gap:22px" data-anim><div><div class="meta">成品 / P50 多色夏日氛围感海报</div><h2 class="xl" style="margin-top:2vh;font-size:min(4.8vw,8.6vh)">先有季节感，<br>再有产品<br>存在感。</h2></div><p class="lead" style="font-size:max(18px,1.08vw)">色彩、光线和环境情绪负责“夏日”；产品角度、边缘和材质负责“可信”。两者同时成立，海报才不只是好看背景。</p></div>
+      <div class="media-stack" data-anim style="grid-template-rows:minmax(0,1fr) 22vh;height:72vh">
+        <figure class="source-frame" style="height:auto;min-height:0"><img src="images/ppt-media/image4.jpeg" alt="P50 多色夏日氛围感海报成品图"></figure>
+        <figure class="video-card" style="height:auto"><video src="images/ppt-media/media1.mp4" controls muted preload="metadata" playsinline></video><figcaption>视频素材</figcaption></figure>
       </div>
     </div>
   </section>
   <section class="slide dark" data-title="参考约束">
     <div class="chrome"><div>Reference · Line Constraint</div><div>03 / 06</div></div>
     <div class="grid-2">
-      <div class="media-grid" data-anim>
+      <div class="media-grid flow-grid" data-anim>
         <div class="flow-order" style="grid-column:1/-1"><span>参考图</span><span class="arrow">→</span><span>线稿</span><span class="arrow">→</span><span>产品角度</span><span class="arrow">→</span><span>抽卡</span></div>
         <figure class="media-card"><img src="images/ppt-media/image5.png" alt="参考图"><figcaption class="cap">参考图</figcaption></figure>
-        <figure class="media-card"><img src="images/ppt-media/image6.png" alt="提取线稿作为约束"><figcaption class="cap">线稿</figcaption></figure>
-        <figure class="media-card"><img src="images/ppt-media/image7.png" alt="对角度摆好产品"><figcaption class="cap">产品角度</figcaption></figure>
-        <figure class="media-card"><img src="images/ppt-media/image8.png" alt="抽卡筛选面板"><figcaption class="cap">抽卡</figcaption></figure>
+        <figure class="media-card"><img src="images/ppt-media/image6.png" alt="线稿"><figcaption class="cap">线稿</figcaption></figure>
+        <figure class="media-card"><img src="images/ppt-media/image7.png" alt="产品角度"><figcaption class="cap">产品角度</figcaption></figure>
+        <figure class="media-card"><img src="images/ppt-media/image8.png" alt="抽卡"><figcaption class="cap">抽卡</figcaption></figure>
       </div>
-      <div style="display:flex;flex-direction:column;justify-content:center;gap:4vh" data-anim><div class="meta">参考图 → 线稿</div><h2 class="statement">先约束，<br>再发散。</h2><p class="lead">参考图不是直接复刻，而是提取构图线、产品姿态和视觉重心。线稿约束可以减少生成时的随机漂移。</p></div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:4vh" data-anim><div class="meta">参考图 → 线稿 → 产品角度 → 抽卡</div><h2 class="statement">先约束，<br>再发散。</h2><p class="lead">参考图不是直接复刻，而是提取构图线、产品姿态和视觉重心。线稿约束可以减少生成时的随机漂移。</p></div>
     </div>
   </section>
   <section class="slide" data-title="制作流程">
